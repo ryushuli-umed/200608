@@ -1,0 +1,413 @@
+openapi: 3.0.1
+info:
+  title: jmed-backend
+  description: Import from "jmed-backend" Function App
+  version: '1.0'
+servers:
+  - url: https://jmed-backend-apim.azure-api.net/jmed-backend
+paths:
+  '/requests/doctor/{requestId}':
+    get:
+      summary: DoctorRequestsHttpTriggerById
+      operationId: get-doctorrequestshttptriggerbyid
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: Status can be either 0 or 1. 1 means confirmed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getDoctorRequests'
+              example:
+                requestId: '1'
+                date: '20200501'
+                time: 午前
+                place: 東京
+                salary: 20000
+                status: 1
+    delete:
+      summary: DoctorRequestsHttpTriggerById
+      operationId: delete-doctorrequestshttptriggerbyid
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: ''
+  '/requests/institution/user/{userId}':
+    get:
+      summary: InstitutionRequestsHttpTriggerByUser
+      operationId: get-institutionrequestshttptriggerbyuser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            enum:
+              - '1'
+            type: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getInstitutionRequestsByUser'
+    post:
+      summary: InstitutionRequestsHttpTriggerByUser
+      operationId: post-institutionrequestshttptriggerbyuser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/institutionRequests'
+            example:
+              date: '20200501'
+              exactTime: 1700 - 2400
+              place: 東京
+              salary: 10000
+              speciality: 小児科
+      responses:
+        '201':
+          description: Institution request created.
+  '/confirmation/{requestId}':
+    post:
+      summary: ConfirmationHttpTrigger
+      description: Confirm request. This should be done by doctor that means by default requestId is from request created by doctor.
+      operationId: post-confirmationhttptrigger
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            enum:
+              - '1'
+            type: ''
+            default: ''
+      responses:
+        '201':
+          description: ''
+  '/profile/institution/{userId}':
+    post:
+      summary: InstitutionProfileHttpTriggerByUser
+      operationId: post-institutionprofilehttptriggerbyuser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/institutionProfile'
+              example:
+                institutionName: 病院
+                institutionFurigana: びょういん
+                email: sample@umed.co.jp
+                firstName: 達郎
+                lastName: 山下
+                firstFurigana: たつろう
+                lastFurigana: やました
+                phone: 080-1234-5678
+  '/requests/institution/{requestId}':
+    get:
+      summary: InstitutionRequestsHttpTriggerById
+      operationId: get-institutionrequestshttptriggerbyid
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            enum:
+              - '1'
+            type: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json: { }
+    delete:
+      summary: InstitutionRequestsHttpTriggerById
+      operationId: delete-institutionrequestshttptriggerbyid
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: ''
+  '/requests/doctor/user/{userId}':
+    get:
+      summary: DoctorRequestsHttpTriggerByUser
+      operationId: get-doctorrequestshttptriggerbyuser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            enum:
+              - '1'
+            type: ''
+      responses:
+        '200':
+          description: "status can be either 1 or 0\n1 means confirmed and 0 means not confirmed."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getDoctorRequestsByUser'
+              example:
+                - requestId: '1'
+                  date: '20200501'
+                  time: 午前
+                  place: 東京
+                  salary: 20000
+                  status: 0
+                  speciality: 小児科
+                - requestId: '3'
+                  date: '20200503'
+                  time: 午前
+                  place: 東京
+                  salary: 20000
+                  status: 1
+                  speciality: 小児科
+    post:
+      summary: DoctorRequestsHttpTriggerByUser
+      operationId: post-doctorrequestshttptriggerbyuser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/doctorRequests'
+            example:
+              date: '20200501'
+              time: 午前
+              place: 東京
+              salary: 10000
+      responses:
+        '201':
+          description: Doctor request is created in the database.
+  '/profile/doctor/{userId}':
+    post:
+      summary: DoctorProfileHttpTriggerByUser
+      operationId: post-doctorprofilehttptriggerbyuser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/doctorProfile'
+            example:
+              firstName: 達郎
+              lastName: 山下
+              firstFurigana: たつろう
+              lastFurigana: やました
+              sex: 男
+              postcode: 104-0031
+              address: 東京都中央区京橋1-6-13 BTS OFFICE 6F
+              phone: 080-1234-5678
+              email: SAMPLE@JMED.JP
+              yearDoctor: '2016'
+              university: 東京大学
+              speciality: 小児科
+      responses:
+        '201':
+          description: ''
+components:
+  schemas:
+    doctorProfile:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        firstFurigana:
+          type: string
+        lastFurigana:
+          type: string
+        sex:
+          type: string
+        postcode:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        yearDoctor:
+          type: string
+        university:
+          type: string
+        speciality:
+          type: string
+    institutionProfile:
+      type: object
+      properties:
+        institutionName:
+          type: string
+        institutionFurigana:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        firstFurigana:
+          type: string
+        lastFurigana:
+          type: string
+        phone:
+          type: string
+    getInstitutionRequests:
+      type: object
+      properties:
+        date:
+          type: string
+        exactTime:
+          type: string
+        place:
+          type: string
+        salary:
+          type: integer
+        speciality:
+          type: string
+    doctorRequests:
+      type: object
+      properties:
+        date:
+          type: string
+        time:
+          type: string
+        place:
+          type: string
+        salary:
+          type: integer
+    getDoctorRequests:
+      type: object
+      properties:
+        requestId:
+          type: string
+        date:
+          type: string
+        time:
+          type: string
+        place:
+          type: string
+        salary:
+          type: integer
+        speciality:
+          type: string
+        status:
+          type: integer
+    institutionRequests:
+      type: object
+      properties:
+        date:
+          type: string
+        exactTime:
+          type: string
+        place:
+          type: string
+        salary:
+          type: integer
+        speciality:
+          type: string
+    getDoctorRequestsByUser:
+      type: array
+      items:
+        required:
+          - requestId
+          - date
+          - time
+          - place
+          - salary
+          - status
+          - speciality
+        type: object
+        properties:
+          requestId:
+            type: string
+          date:
+            type: string
+          time:
+            type: string
+          place:
+            type: string
+          salary:
+            type: integer
+          status:
+            type: integer
+          speciality:
+            type: string
+    getInstitutionRequestsByUser:
+      type: array
+      items:
+        required:
+          - requestId
+          - date
+          - time
+          - place
+          - salary
+          - status
+          - speciality
+        type: object
+        properties:
+          requestId:
+            type: string
+          date:
+            type: string
+          time:
+            type: string
+          place:
+            type: string
+          salary:
+            type: integer
+          status:
+            type: integer
+          speciality:
+            type: string
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

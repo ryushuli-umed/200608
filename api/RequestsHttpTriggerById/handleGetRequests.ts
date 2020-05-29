@@ -10,9 +10,10 @@ const handleGetRequests = async (context: Context): Promise<HTTPResponse> => {
     body: JSON.stringify({
       requestId: '1',
       date: '20200501',
-      time: 'AM',
-      place: 'tokyo',
-      salary: '>20000',
+      time: '午前',
+      place: '東京',
+      salary: 20000,
+      speciality: '小児科',
     }),
     status: 200,
   };
