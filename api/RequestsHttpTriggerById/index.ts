@@ -1,6 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from '@azure/functions';
-import handleDeleteRequests from '../RequestsHttpTriggerById/handleDeleteRequests';
-import handleGetRequests from '../RequestsHttpTriggerById/handleGetRequests';
+import handleDeleteRequests from './handleDeleteRequests';
+import handleGetRequests from './handleGetRequests';
 
 interface HTTPResponse {
   body?: string;

@@ -6,7 +6,7 @@
       "direction": "in",
       "name": "req",
       "methods": ["delete", "get"],
-      "route": "requests/doctor/{requestId}"
+      "route": "requests/institution/{requestId}"
     },
     {
       "type": "http",

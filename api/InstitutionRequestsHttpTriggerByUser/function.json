@@ -1,0 +1,19 @@
+{
+    "bindings": [
+      {
+        "authLevel": "anonymous",
+        "type": "httpTrigger",
+        "direction": "in",
+        "name": "req",
+        "methods": ["get", "post"],
+        "route": "requests/institution/user/{userId}"
+      },
+      {
+        "type": "http",
+        "direction": "out",
+        "name": "$return"
+      }
+    ],
+    "scriptFile": "../dist/RequestsHttpTriggerByUser/index.js"
+  }
+  

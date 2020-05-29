@@ -5,8 +5,8 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["delete", "get"],
-      "route": "requests/doctor/{requestId}"
+      "methods": ["post"],
+      "route": "confirmation/{requestId}"
     },
     {
       "type": "http",
@@ -14,5 +14,5 @@
       "name": "$return"
     }
   ],
-  "scriptFile": "../dist/RequestsHttpTriggerById/index.js"
+  "scriptFile": "../dist/ConfirmationHttpTrigger/index.js"
 }
