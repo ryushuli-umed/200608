@@ -1,0 +1,28 @@
+:root {
+    --main-color: #2c7873;
+    --sub-color: #6fb98f;
+    --sub-color-white: rgba(111, 185, 142, 0.15);
+    --highlight-color: #ffd800;
+}
+
+.NavigationItem {
+    float: right;
+}
+
+.NavigationItem a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.NavigationItem a:hover,
+.NavigationItem a:active,
+.NavigationItem a.active {
+    background-color: var(--sub-color-white);
+}
+
+.NavigationItemLeft {
+    float: left;
+}

@@ -1,0 +1,31 @@
+.topWrapper {
+    background-size: cover;
+    height: 700px;
+}
+
+.buttonWrapper {
+    background-color: var(--highlight-color);
+    position: relative;
+    top: 25px;
+    width: 300px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: white;
+    height: 100px;
+    text-align: center;
+}
+
+.aboutWrapper {
+    background-color: var(--sub-color-white);
+    height: 600px;
+}
+
+.howToWrapper {
+    background-color: white;
+    height: 600px;
+}
+
+.qaWrapper {
+    background-color: var(--sub-color-white);
+    height: 600px;
+}

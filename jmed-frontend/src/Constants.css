@@ -1,0 +1,6 @@
+:global(:root) {
+    --main-color: #2c7873;
+    --sub-color: #6fb98f;
+    --sub-color-white: rgba(111, 185, 142, 0.15);
+    --highlight-color: #ffd800;
+}

@@ -94,3 +94,6 @@ appsettings.json
 **/local.settings.json
 
 .DS_Store
+
+./**/node*
+./**/dist*
