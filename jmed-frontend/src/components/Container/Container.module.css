@@ -1,3 +1,9 @@
 .Container {
-    width: 90%;
+    text-align: center;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 18px;
+    border: 2px solid black;
 }

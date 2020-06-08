@@ -8,7 +8,7 @@ const NavigationItems: FC = () => {
     return (
         <ul className={classes.NavigationItems}>
             <NavigationItemLeft link="/" exact>
-                JMED
+                <p>JMED</p>
             </NavigationItemLeft>
             <NavigationItemRight link="/howto">
                 ご利用の流れ

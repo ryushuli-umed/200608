@@ -1,7 +1,10 @@
 .NavigationItems {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
     overflow: hidden;
     background-color: var(--main-color);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
 }

@@ -3,8 +3,8 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
 
-const HowTo = React.lazy(() => {
-    return import('./containers/HowTo/HowTo');
+const SignUp = React.lazy(() => {
+    return import('./containers/Auth/SignUp/SignUp');
 });
 
 const QandA = React.lazy(() => {
@@ -18,7 +18,7 @@ const Inquery = React.lazy(() => {
 const App = () => {
     let routes = (
         <Switch>
-            <Route path="/howto" render={() => <HowTo />} />
+            <Route path="/signup" render={() => <SignUp />} />
             <Route path="/inquery" render={() => <Inquery />} />
             <Route path="/qanda" render={() => <QandA />} />
             <Route path="/" exact component={Home} />

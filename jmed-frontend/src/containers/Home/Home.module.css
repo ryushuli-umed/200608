@@ -1,6 +1,17 @@
 .topWrapper {
+    background-image: url('https://doctor.mynavi.jp/contents/column/wp-content/uploads/sites/3/2018/02/mv.jpg');
     background-size: cover;
     height: 700px;
+    position: relative;
+}
+
+.topPop {
+    background-color: white;
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
 }
 
 .buttonWrapper {

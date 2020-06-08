@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 import Container from '../../components/Container/Container';
-
 import classes from './Home.module.css';
 
 const Home: FC = () => {
     return (
         <>
-            <Container attachedClasses={classes.topWrapper}></Container>
-            <Container attachedClasses={classes.buttonWrapper}>
-                会員登録(無料)
+            <Container attachedClasses={classes.topWrapper}>
+                <div className="topPop">
+                    <h1>test</h1>
+                    <p>test</p>
+                </div>
             </Container>
             <Container attachedClasses={classes.aboutWrapper}>特徴</Container>
             <Container attachedClasses={classes.howToWrapper}>
@@ -16,9 +17,6 @@ const Home: FC = () => {
             </Container>
             <Container attachedClasses={classes.qaWapper}>
                 よくある質問
-            </Container>
-            <Container attachedClasses={classes.buttonWrapper}>
-                会員登録(無料)
             </Container>
         </>
     );

@@ -1,8 +1,16 @@
 import React, { FC } from 'react';
-import { Redirect } from 'react-router-dom';
+import classes from './SignUp.module.css';
+import 'materialize-css';
 
 const SignUp: FC = () => {
-    return <Redirect to="/" />;
+    return (
+        <>
+            <form>
+                <input>test</input>
+                <textarea>test</textarea>
+            </form>
+        </>
+    );
 };
 
 export default SignUp;
